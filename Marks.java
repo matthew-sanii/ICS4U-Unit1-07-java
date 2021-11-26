@@ -44,7 +44,7 @@ final class Marks {
     public static String[][] generateMarks(final Integer[] arrayOfStudents,
                                        final Integer[] arrayOfAssignments) {
 
-        ArrayList<ArrayList<String>> markArray = new ArrayList<ArrayList<String>>();
+        String[][] markArray = new ArrayList<ArrayList<String>>();
         return markArray;
     }
 
@@ -62,16 +62,17 @@ final class Marks {
             System.err.println("Exiting as file does not exist: " + args[0]);
             System.exit(0);
         }
-        final Path filePath = Paths.get(args[0]);
+        final Path studentFilePath = Paths.get(args[0]);
+        final Path assignmentFilePath = Paths.get(args[0]);
         try (BufferedReader readerStudent = Files.newBufferedReader(
                                      studentFilePath, charset)) {
             String lineStudent = "hi";
-            while ((line = reader.readLine()) != null) {
+            while ((lineStudent = reader.readLine()) != null) {
                 try {
                     listOfStudents.add(lineStudent);
                     System.out.println(lineStudent);
                 } catch (ArrayIndexOutOfBoundsException errorCode) {
-                    line = null;
+                    lineStudent = null;
                 }
             }
         } catch (IOException errorCode) {
@@ -81,7 +82,7 @@ final class Marks {
                                      assignmentFilePath, charset)) {
             String lineAssignment = "hello";
             while ((lineAssignment = readerAssignment.readLine()) != null) {
-                listOfAssingments.add(lineAssignment);
+                listOfAssignments.add(lineAssignment);
                 System.out.println(lineAssignment);
             }
 
