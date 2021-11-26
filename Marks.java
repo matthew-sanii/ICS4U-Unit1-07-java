@@ -44,7 +44,7 @@ final class Marks {
     public static String[][] generateMarks(final Integer[] arrayOfStudents,
                                        final Integer[] arrayOfAssignments) {
 
-        String[][] markArray = new ArrayList<ArrayList<String>>();
+        String[][] markArray = new String[3][];
         return markArray;
     }
 
@@ -67,7 +67,7 @@ final class Marks {
         try (BufferedReader readerStudent = Files.newBufferedReader(
                                      studentFilePath, charset)) {
             String lineStudent = "hi";
-            while ((lineStudent = reader.readLine()) != null) {
+            while ((lineStudent = readerStudent.readLine()) != null) {
                 try {
                     listOfStudents.add(lineStudent);
                     System.out.println(lineStudent);
