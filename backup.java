@@ -45,7 +45,7 @@ final class Marks {
     * @return the combined array of the two lists
     */
     public static String[][] generateMarks(final String[] arrayOfStudents,
-                                       final String[] arrayOfAssignments) throws IOException {
+                                       final String[] arrayOfAssignments) {
 
         final int average = 75;
         final int deviate = 10;
@@ -53,8 +53,6 @@ final class Marks {
         final int numAssignments = arrayOfAssignments.length;
         // add 1 to both values to take into account the student names and assignment names.
         final String[][] markArray = new String[numStudents + 1][numAssignments + 1];
-	// put a blank value in the first XX of the array
-	markArray[0][0] = "  ";
         for (int row = 1; row <= numStudents; row++) {
             markArray[row][0] = arrayOfStudents[row - 1];
         }
@@ -69,37 +67,16 @@ final class Marks {
                 markArray[vertical][horizontal] = marks;
             }
         }
-        
-	File file = new File("marks.csv");
-	FileWriter fw = new FileWriter(file);
-	BufferedWriter bw = new BufferedWriter(fw);
-
-        for (int x =0; x <= numStudents; x++) {
-	   String fileline = "";
-	   for (int y = 0; y <= numAssignments; y++) {
-	       if (x == 0 && y == 0) {
-                  fileline += "  " + ",";
-               }
-	       else {
-                  fileline += "," + String.valueOf(markArray[x][y]);
-               }
-           }
-	   bw.write(fileline);
-           bw.newLine();
-        }
-
-        bw.close();
-	fw.close();
-
-/*        BufferedWriter br = new BufferedWriter(new FileWriter("marks.csv"));
+        markArray[0][0] = " testing ";
+        printArray(markArray);
+        BufferedWriter br = new BufferedWriter(new FileWriter("marks.csv"));
         StringBuilder sb = new StringBuilder();
         for (String[] element : markArray) {
             sb.append(element);
             sb.append(",");
         }
         br.write(sb);
-        br.close();  
-*/
+        br.close();
         return markArray;
     }
     /**
@@ -124,7 +101,7 @@ final class Marks {
     *
     * @param args Name of file containing a string of numbers
     */
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) {
         final ArrayList<String> listOfStudents = new ArrayList<String>();
         final ArrayList<String> listOfAssignments = new ArrayList<String>();
         final Charset charset = Charset.forName("UTF-8");
