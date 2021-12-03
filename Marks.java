@@ -91,16 +91,16 @@ final class Marks {
         final FileWriter write = new FileWriter(fileName);
         final BufferedWriter buffWrite = new BufferedWriter(write);
 
-        for (int y = 0; y <= numStudents; y++) {
+        for (int upDown = 0; upDown <= numStudents; upDown++) {
             String fileline = "";
-            for (int x = 0; x <= numAssignments; x++) {
-                if (x == 0 && y == 0) {
+            for (int leftRight = 0; leftRight <= numAssignments; leftRight++) {
+                if (leftRight == 0 && upDown == 0) {
                     fileline += "  , ";
                 } else {
-                    if (x == numAssignments) {
-                        fileline += String.valueOf(markArray[y][x]);
+                    if (leftRight == numAssignments) {
+                        fileline += String.valueOf(markArray[upDown][leftRight]);
                     } else {
-                        fileline += String.valueOf(markArray[y][x]) + ", ";
+                        fileline += String.valueOf(markArray[upDown][leftRight]) + ", ";
                     }
                 }
             }
